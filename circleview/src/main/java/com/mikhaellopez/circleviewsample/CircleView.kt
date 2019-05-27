@@ -8,6 +8,10 @@ import android.util.AttributeSet
 import android.view.View
 import com.mikhaellopez.circleview.R
 
+/**
+ * Copyright (C) 2019 Mikhael LOPEZ
+ * Licensed under the Apache License Version 2.0
+ */
 class CircleView constructor(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     companion object {
