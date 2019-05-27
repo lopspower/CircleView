@@ -69,7 +69,7 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
 
         // Init Border
-        if (attributes.getBoolean(R.styleable.CircleView_cv_border, true)) {
+        if (attributes.getBoolean(R.styleable.CircleView_cv_border, false)) {
             val defaultBorderSize = DEFAULT_BORDER_WIDTH * resources.displayMetrics.density
             borderWidth = attributes.getDimension(R.styleable.CircleView_cv_border_width, defaultBorderSize)
             borderColor = attributes.getColor(R.styleable.CircleView_cv_border_color, Color.BLACK)
