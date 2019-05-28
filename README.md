@@ -20,14 +20,14 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.0.0'
+implementation 'com.mikhaellopez:circleview:1.0.1'
 ```
 
 XML
 -----
 
 ```xml    
-<com.mikhaellopez.circleviewsample.CircleView
+<com.mikhaellopez.circleview.CircleView
     android:id="@+id/circleView"
     android:layout_width="300dp"
     android:layout_height="300dp"
