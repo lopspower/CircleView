@@ -1,6 +1,8 @@
 CircleView
 =================
 
+<img src="/preview/preview.gif" alt="sample" title="sample" width="300" height="533" align="right" vspace="52" />
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
@@ -89,5 +91,4 @@ circleView.setShadowGravity(CircleView.ShadowGravity.CENTER);
 LICENCE
 -----
 
-CircularProgressBar by [Lopez Mikhael](http://mikhaellopez.com/) is licensed under a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-Based on a work at https://github.com/Pedramrn/CircularProgressBar.
+CircleView by [Lopez Mikhael](http://mikhaellopez.com/) is licensed under a [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0).
