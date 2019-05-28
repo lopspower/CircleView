@@ -11,7 +11,7 @@ import android.view.View
  * Copyright (C) 2019 Mikhael LOPEZ
  * Licensed under the Apache License Version 2.0
  */
-class CircleView constructor(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
     companion object {
         private const val DEFAULT_BORDER_WIDTH = 4f
@@ -19,8 +19,8 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
     }
 
     // Paint
-    private var paint: Paint = Paint().apply { isAntiAlias = true }
-    private var paintBorder: Paint = Paint().apply { isAntiAlias = true }
+    private val paint: Paint = Paint().apply { isAntiAlias = true }
+    private val paintBorder: Paint = Paint().apply { isAntiAlias = true }
 
     //region Properties
     var circleColor: Int = Color.WHITE
@@ -29,7 +29,7 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
             paint.color = field
             invalidate()
         }
-    var borderWidth: Float = 0.toFloat()
+    var borderWidth: Float = 0f
         set(value) {
             field = value
             invalidate()
@@ -37,10 +37,9 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
     var borderColor: Int = Color.BLACK
         set(value) {
             field = value
-            paintBorder.color = borderColor
             invalidate()
         }
-    var shadowRadius: Float = 0.toFloat()
+    var shadowRadius: Float = 0f
         set(value) {
             field = value
             invalidate()
@@ -55,12 +54,13 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
             field = value
             invalidate()
         }
-
-    fun addShadow() {
-        if (shadowRadius == 0f)
-            shadowRadius = DEFAULT_SHADOW_RADIUS
-        invalidate()
-    }
+    var shadowEnable = false
+        set(value) {
+            field = value
+            if (field && shadowRadius == 0f)
+                shadowRadius = DEFAULT_SHADOW_RADIUS
+            invalidate()
+        }
     //endregion
 
     init {
@@ -71,6 +71,9 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
         // Load the styled attributes and set their properties
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
 
+        // Init Circle Color
+        circleColor = attributes.getColor(R.styleable.CircleView_cv_color, Color.WHITE)
+
         // Init Border
         if (attributes.getBoolean(R.styleable.CircleView_cv_border, false)) {
             val defaultBorderSize = DEFAULT_BORDER_WIDTH * resources.displayMetrics.density
@@ -78,10 +81,9 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
             borderColor = attributes.getColor(R.styleable.CircleView_cv_border_color, Color.BLACK)
         }
 
-        circleColor = attributes.getColor(R.styleable.CircleView_cv_color, Color.WHITE)
-
         // Init Shadow
-        if (attributes.getBoolean(R.styleable.CircleView_cv_shadow, false)) {
+        shadowEnable = attributes.getBoolean(R.styleable.CircleView_cv_shadow, shadowEnable)
+        if (shadowEnable) {
             val shadowGravityIntValue = attributes.getInteger(R.styleable.CircleView_cv_shadow_gravity, ShadowGravity.BOTTOM.value)
             shadowGravity = ShadowGravity.fromValue(shadowGravityIntValue)
             shadowRadius = attributes.getFloat(R.styleable.CircleView_cv_shadow_radius, DEFAULT_SHADOW_RADIUS)
@@ -95,8 +97,8 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val usableWidth = width - paddingLeft + paddingRight
-        val usableHeight = height - paddingTop + paddingTop
+        val usableWidth = width - (paddingLeft + paddingRight)
+        val usableHeight = height - (paddingTop + paddingBottom)
 
         val circleCenter = (Math.min(usableWidth, usableHeight) - borderWidth * 2).toInt() / 2
         val margeWithShadowRadius = shadowRadius * 2
@@ -107,6 +109,7 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
         // Draw Shadow
         drawShadow()
         // Draw Border
+        paintBorder.color = if (borderWidth == 0f) circleColor else borderColor
         canvas.drawCircle(cx, cy, circleCenter + borderWidth - margeWithShadowRadius, paintBorder)
         // Draw Circle background
         canvas.drawCircle(cx, cy, circleCenter - margeWithShadowRadius, paint)
@@ -127,7 +130,6 @@ class CircleView constructor(context: Context, attrs: AttributeSet) : View(conte
         }
 
         paintBorder.setShadowLayer(shadowRadius, dx, dy, shadowColor)
-
     }
     //endregion
 
