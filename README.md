@@ -57,6 +57,8 @@ You must use the following properties in your XML to change your CircleView.
 KOTLIN
 -----
 
+<img src="/preview/capture.png" alt="sample" title="sample" width="300" height="533" align="right" vspace="200" />
+
 ```kotlin
 val circleView = findViewById<CircleView>(R.id.circleView)
 circleView.circleColor = Color.WHITE
