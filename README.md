@@ -20,7 +20,7 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.0.1'
+implementation 'com.mikhaellopez:circleview:1.0.2'
 ```
 
 XML
@@ -66,7 +66,7 @@ circleView.circleColor = Color.WHITE
 circleView.borderColor = Color.BLACK
 circleView.borderWidth = 10f
 // Add Shadow with default param
-circleView.addShadow()
+circleView.shadowEnable = true
 // or with custom param
 circleView.shadowRadius = 15f
 circleView.shadowColor = Color.RED
@@ -83,7 +83,7 @@ circleView.setCircleColor(Color.WHITE);
 circleView.setBorderColor(Color.BLACK);
 circleView.setBorderWidth(10f);
 // Add Shadow with default param
-circleView.addShadow();
+circleView.setShadowEnable(true);
 // or with custom param
 circleView.setShadowRadius(15f);
 circleView.setShadowColor(Color.RED);
