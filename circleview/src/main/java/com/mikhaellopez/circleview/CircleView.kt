@@ -3,9 +3,12 @@ package com.mikhaellopez.circleview
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Outline
 import android.graphics.Paint
+import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewOutlineProvider
 
 /**
  * Copyright (C) 2019 Mikhael LOPEZ
@@ -18,11 +21,13 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         private const val DEFAULT_SHADOW_RADIUS = 8.0f
     }
 
-    // Paint
+    // Properties
     private val paint: Paint = Paint().apply { isAntiAlias = true }
     private val paintBorder: Paint = Paint().apply { isAntiAlias = true }
+    private var circleCenter = 0
+    private var heightCircle = 0
 
-    //region Properties
+    //region Attributes
     var circleColor: Int = Color.WHITE
         set(value) {
             field = value
@@ -32,7 +37,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     var borderWidth: Float = 0f
         set(value) {
             field = value
-            invalidate()
+            update()
         }
     var borderColor: Int = Color.BLACK
         set(value) {
@@ -42,7 +47,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     var shadowRadius: Float = 0f
         set(value) {
             field = value
-            invalidate()
+            shadowEnable = shadowRadius > 0f
         }
     var shadowColor = Color.BLACK
         set(value) {
@@ -59,7 +64,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
             field = value
             if (field && shadowRadius == 0f)
                 shadowRadius = DEFAULT_SHADOW_RADIUS
-            invalidate()
+            update()
         }
     //endregion
 
@@ -93,26 +98,47 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         attributes.recycle()
     }
 
-    //region Draw Method
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+        update()
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val usableWidth = width - (paddingLeft + paddingRight)
-        val usableHeight = height - (paddingTop + paddingBottom)
-
-        val circleCenter = (Math.min(usableWidth, usableHeight) - borderWidth * 2).toInt() / 2
-        val margeWithShadowRadius = shadowRadius * 2
-
-        val cx = circleCenter + borderWidth
-        val cy = circleCenter + borderWidth
+        val circleCenterWithBorder = circleCenter + borderWidth
+        val margeWithShadowRadius = if (shadowEnable) shadowRadius * 2 else 0f
 
         // Draw Shadow
-        drawShadow()
+        if (shadowEnable) drawShadow()
         // Draw Border
-        paintBorder.color = if (borderWidth == 0f) circleColor else borderColor
-        canvas.drawCircle(cx, cy, circleCenter + borderWidth - margeWithShadowRadius, paintBorder)
+        canvas.drawCircle(circleCenterWithBorder, circleCenterWithBorder, circleCenterWithBorder - margeWithShadowRadius, paintBorder)
         // Draw Circle background
-        canvas.drawCircle(cx, cy, circleCenter - margeWithShadowRadius, paint)
+        canvas.drawCircle(circleCenterWithBorder, circleCenterWithBorder, circleCenter - margeWithShadowRadius, paint)
+    }
+
+    private fun update() {
+        val usableWidth = width - (paddingLeft + paddingRight)
+        val usableHeight = height - (paddingTop + paddingBottom)
+        heightCircle = Math.min(usableWidth, usableHeight)
+
+        circleCenter = (heightCircle - borderWidth * 2).toInt() / 2
+        paintBorder.color = if (borderWidth == 0f) circleColor else borderColor
+
+        manageElevation()
+        invalidate()
+    }
+
+    private fun manageElevation() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            outlineProvider = if (!shadowEnable) object : ViewOutlineProvider() {
+                override fun getOutline(view: View?, outline: Outline?) {
+                    outline?.setOval(0, 0, heightCircle, heightCircle)
+                }
+            } else {
+                null
+            }
+        }
     }
 
     private fun drawShadow() {
