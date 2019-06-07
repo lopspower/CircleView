@@ -57,7 +57,7 @@ You must use the following properties in your XML to change your CircleView.
 * `app:cv_shadow_radius`                  (float)     -> default 8.0f
 * `app:cv_shadow_gravity`                 (center, top, bottom, start or end) -> default bottom
 
-You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
+:information_source: You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
 
 KOTLIN
 -----
