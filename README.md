@@ -23,7 +23,7 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.0.3'
+implementation 'com.mikhaellopez:circleview:1.1.0'
 ```
 
 XML
@@ -56,6 +56,8 @@ You must use the following properties in your XML to change your CircleView.
 * `app:cv_shadow_color`                   (color)     -> default BLACK
 * `app:cv_shadow_radius`                  (float)     -> default 8.0f
 * `app:cv_shadow_gravity`                 (center, top, bottom, start or end) -> default bottom
+
+You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
 
 KOTLIN
 -----
