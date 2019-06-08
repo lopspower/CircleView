@@ -23,7 +23,7 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.1.0'
+implementation 'com.mikhaellopez:circleview:1.1.1'
 ```
 
 XML
