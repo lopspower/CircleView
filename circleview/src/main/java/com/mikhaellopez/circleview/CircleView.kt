@@ -142,6 +142,10 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun drawShadow() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.P) {
+            setLayerType(LAYER_TYPE_SOFTWARE, paintBorder)
+        }
+
         var dx = 0.0f
         var dy = 0.0f
 
