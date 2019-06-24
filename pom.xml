@@ -24,11 +24,18 @@
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
-            <url>http://jcenter.bintray.com/</url>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
         <repository>
             <id>ossrh</id>
-            <url>http://jcenter.bintray.com/</url>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+    <developers>
+        <developer>
+            <name>Lopez Mikhael</name>
+            <url>https://github.com/lopspower</url>
+            <email>lopez.mikhael@gmail.com</email>
+        </developer>
+    </developers>
 </project>
