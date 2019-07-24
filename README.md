@@ -64,16 +64,17 @@ KOTLIN
 
 ```kotlin
 val circleView = findViewById<CircleView>(R.id.circleView)
-circleView.circleColor = Color.WHITE
-// Set Border
-circleView.borderColor = Color.BLACK
-circleView.borderWidth = 10f
-// Add Shadow with default param
-circleView.shadowEnable = true
-// or with custom param
-circleView.shadowRadius = 15f
-circleView.shadowColor = Color.RED
-circleView.shadowGravity = CircleView.ShadowGravity.CENTER
+circleView.apply {
+    // Set Border
+    borderColor = Color.BLACK
+    borderWidth = 10f
+    // Add Shadow with default param
+    shadowEnable = true
+    // or with custom param
+    shadowRadius = 15f
+    shadowColor = Color.RED
+    shadowGravity = CircleView.ShadowGravity.CENTER
+}
 ```
 
 JAVA
