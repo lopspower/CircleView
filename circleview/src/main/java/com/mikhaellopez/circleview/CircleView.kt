@@ -9,6 +9,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewOutlineProvider
+import kotlin.math.min
 
 /**
  * Copyright (C) 2019 Mikhael LOPEZ
@@ -90,7 +91,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         shadowEnable = attributes.getBoolean(R.styleable.CircleView_cv_shadow, shadowEnable)
         if (shadowEnable) {
             val shadowGravityIntValue = attributes.getInteger(R.styleable.CircleView_cv_shadow_gravity, ShadowGravity.BOTTOM.value)
-            shadowGravity = ShadowGravity.fromValue(shadowGravityIntValue)
+            shadowGravity = shadowGravityIntValue.toShadowGravity()
             shadowRadius = attributes.getFloat(R.styleable.CircleView_cv_shadow_radius, DEFAULT_SHADOW_RADIUS)
             shadowColor = attributes.getColor(R.styleable.CircleView_cv_shadow_color, shadowColor)
         }
@@ -120,7 +121,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private fun update() {
         val usableWidth = width - (paddingLeft + paddingRight)
         val usableHeight = height - (paddingTop + paddingBottom)
-        heightCircle = Math.min(usableWidth, usableHeight)
+        heightCircle = min(usableWidth, usableHeight)
 
         circleCenter = (heightCircle - borderWidth * 2).toInt() / 2
         paintBorder.color = if (borderWidth == 0f) circleColor else borderColor
@@ -161,26 +162,26 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
         paintBorder.setShadowLayer(shadowRadius, dx, dy, shadowColor)
     }
-    //endregion
 
+    private fun Int.toShadowGravity(): ShadowGravity =
+            when (this) {
+                1 -> ShadowGravity.CENTER
+                2 -> ShadowGravity.TOP
+                3 -> ShadowGravity.BOTTOM
+                4 -> ShadowGravity.START
+                5 -> ShadowGravity.END
+                else -> throw IllegalArgumentException("This value is not supported for ShadowGravity: $this")
+            }
+
+    /**
+     * ShadowGravity enum class to set the gravity of the CircleView shadow
+     */
     enum class ShadowGravity(val value: Int) {
         CENTER(1),
         TOP(2),
         BOTTOM(3),
         START(4),
-        END(5);
-
-        companion object {
-            fun fromValue(value: Int): ShadowGravity =
-                    when (value) {
-                        1 -> CENTER
-                        2 -> TOP
-                        3 -> BOTTOM
-                        4 -> START
-                        5 -> END
-                        else -> throw IllegalArgumentException("This value is not supported for ShadowGravity: $value")
-                    }
-        }
+        END(5)
     }
 
 }
