@@ -44,7 +44,6 @@ XML
 
 You must use the following properties in your XML to change your CircleView.
 
-
 ##### Properties:
 
 * `app:cv_color`                          (color)     -> default WHITE
