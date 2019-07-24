@@ -10,7 +10,6 @@ CircleView
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-CircleView-lightgrey.svg?style=flat)](https://android-arsenal.com/details/1/7692)
 [![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
 
-
 This is an Android project allowing to realize a circular View in the simplest way possible. Finish the oval shapes of all colors in your projects.
 
 <a href="https://play.google.com/store/apps/details?id=com.mikhaellopez.lopspower">
