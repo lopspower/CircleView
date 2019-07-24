@@ -46,14 +46,14 @@ You must use the following properties in your XML to change your CircleView.
 
 ### Properties
 
-*  `app:cv_color` (color) -> default WHITE
-*  `app:cv_border` (boolean) -> default false
-*  `app:cv_border_width` (dimension) -> default 4dp
-*  `app:cv_border_color` (color) -> default BLACK
-*  `app:cv_shadow` (boolean) -> default false
-*  `app:cv_shadow_color` (color) -> default BLACK
-*  `app:cv_shadow_radius` (float) -> default 8.0f
-*  `app:cv_shadow_gravity` (center, top, bottom, start or end) -> default bottom
+  * `app:cv_color` (color) -> default WHITE
+  * `app:cv_border` (boolean) -> default false
+  * `app:cv_border_width` (dimension) -> default 4dp
+  * `app:cv_border_color` (color) -> default BLACK
+  * `app:cv_shadow` (boolean) -> default false
+  * `app:cv_shadow_color` (color) -> default BLACK
+  * `app:cv_shadow_radius` (float) -> default 8.0f
+  * `app:cv_shadow_gravity` (center, top, bottom, start or end) -> default bottom
 
 :information_source: You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
 
