@@ -2,9 +2,25 @@
 <resources>
     <declare-styleable name="CircleView">
         <attr name="cv_color" format="color" />
+        <attr name="cv_color_start" format="color" />
+        <attr name="cv_color_end" format="color" />
+        <attr name="cv_color_direction">
+            <flag name="left_to_right" value="1" />
+            <flag name="right_to_left" value="2" />
+            <flag name="top_to_bottom" value="3" />
+            <flag name="bottom_to_top" value="4" />
+        </attr>
         <attr name="cv_border" format="boolean" />
         <attr name="cv_border_width" format="dimension" />
         <attr name="cv_border_color" format="color" />
+        <attr name="cv_border_color_start" format="color" />
+        <attr name="cv_border_color_end" format="color" />
+        <attr name="cv_border_color_direction">
+            <flag name="left_to_right" value="1" />
+            <flag name="right_to_left" value="2" />
+            <flag name="top_to_bottom" value="3" />
+            <flag name="bottom_to_top" value="4" />
+        </attr>
         <attr name="cv_shadow" format="boolean" />
         <attr name="cv_shadow_color" format="color" />
         <attr name="cv_shadow_radius" format="float" />
