@@ -22,7 +22,7 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.1.2'
+implementation 'com.mikhaellopez:circleview:1.2.0'
 ```
 
 XML
@@ -44,16 +44,22 @@ XML
 
 You must use the following properties in your XML to change your CircleView.
 
-| Properties              | Type                              | Default |
-| ----------------------- | --------------------------------- | ------- |
-| `app:cv_color`          | color                             | WHITE   |
-| `app:cv_border`         | boolean                           | false   |
-| `app:cv_border_width`   | dimension                         | 4dp     |
-| `app:cv_border_color`   | color                             | BLACK   |
-| `app:cv_shadow`         | boolean                           | false   |
-| `app:cv_shadow_color`   | color                             | BLACK   |
-| `app:cv_shadow_radius`  | float                             | 8.0f    |
-| `app:cv_shadow_gravity` | center, top, bottom, start or end | bottom  |
+| Properties                      | Type                                                         | Default       |
+| ------------------------------- | ------------------------------------------------------------ | ------------- |
+| `app:cv_color`                  | color                                                        | WHITE         |
+| `app:cv_color_start`            | color                                                        | cv_color      |
+| `app:cv_color_end`              | color                                                        | cv_color      |
+| `app:cv_color_direction`        | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right |
+| `app:cv_border`                 | boolean                                                      | false         |
+| `app:cv_border_width`           | dimension                                                    | 4dp           |
+| `app:cv_border_color`           | color                                                        | BLACK         |
+| `app:cv_border_color_start`     | color                                                        | border_color  |
+| `app:cv_border_color_end`       | color                                                        | border_color  |
+| `app:cv_border_color_direction` | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right |
+| `app:cv_shadow`                 | boolean                                                      | false         |
+| `app:cv_shadow_color`           | color                                                        | BLACK         |
+| `app:cv_shadow_radius`          | float                                                        | 8.0f          |
+| `app:cv_shadow_gravity`         | center, top, bottom, start or end                            | bottom        |
 
 :information_source: You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
 
@@ -65,9 +71,21 @@ KOTLIN
 ```kotlin
 val circleView = findViewById<CircleView>(R.id.circleView)
 circleView.apply {
+    // Set Color
+    circleColor = Color.WHITE
+    // or with gradient
+    circleColorStart = Color.BLACK
+    circleColorEnd = Color.RED
+    circleColorDirection = CircleView.GradientDirection.TOP_TO_BOTTOM
+    
     // Set Border
-    borderColor = Color.BLACK
     borderWidth = 10f
+    borderColor = Color.BLACK
+    // or with gradient
+    borderColorStart = Color.BLACK
+    borderColorEnd = Color.RED
+    borderColorDirection = CircleView.GradientDirection.TOP_TO_BOTTOM
+    
     // Add Shadow with default param
     shadowEnable = true
     // or with custom param
@@ -82,10 +100,22 @@ JAVA
 
 ```java
 CircleView circleView = findViewById(R.id.circleView);
+
+// Set Color
 circleView.setCircleColor(Color.WHITE);
+// or with gradient
+circleView.setCircleColorStart(Color.BLACK);
+circleView.setCircleColorEnd(Color.RED);
+circleView.setCircleColorDirection(CircleView.GradientDirection.TOP_TO_BOTTOM);
+
 // Set Border
-circleView.setBorderColor(Color.BLACK);
 circleView.setBorderWidth(10f);
+circleView.setBorderColor(Color.BLACK);
+// or with gradient
+circleView.setBorderColorStart(Color.BLACK);
+circleView.setBorderColorEnd(Color.RED);
+circleView.setBorderColorDirection(CircleView.GradientDirection.TOP_TO_BOTTOM);
+
 // Add Shadow with default param
 circleView.setShadowEnable(true);
 // or with custom param
