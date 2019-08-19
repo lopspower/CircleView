@@ -199,7 +199,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
             GradientDirection.LEFT_TO_RIGHT -> x1 = width.toFloat()
             GradientDirection.RIGHT_TO_LEFT -> x0 = width.toFloat()
             GradientDirection.TOP_TO_BOTTOM -> y1 = height.toFloat()
-            GradientDirection.BOTTOM_TO_END -> y0 = height.toFloat()
+            GradientDirection.BOTTOM_TO_TOP -> y0 = height.toFloat()
         }
         return LinearGradient(x0, y0, x1, y1, startColor, endColor, Shader.TileMode.CLAMP)
     }
@@ -250,7 +250,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
                 1 -> GradientDirection.LEFT_TO_RIGHT
                 2 -> GradientDirection.RIGHT_TO_LEFT
                 3 -> GradientDirection.TOP_TO_BOTTOM
-                4 -> GradientDirection.BOTTOM_TO_END
+                4 -> GradientDirection.BOTTOM_TO_TOP
                 else -> throw IllegalArgumentException("This value is not supported for GradientDirection: $this")
             }
 
@@ -272,7 +272,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         LEFT_TO_RIGHT(1),
         RIGHT_TO_LEFT(2),
         TOP_TO_BOTTOM(3),
-        BOTTOM_TO_END(4)
+        BOTTOM_TO_TOP(4)
     }
 
 }
