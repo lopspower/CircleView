@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.ben-manes.versions'
 
 android {
     compileSdkVersion androidCompileSdkVersion
@@ -21,7 +22,14 @@ android {
 dependencies {
     implementation project(':circleview')
     //implementation "com.mikhaellopez:circleview:$androidVersionName"
+
+    // KOTLIN
     implementation kotlinStdlib
+    // ANDROID
     implementation androidXAppCompat
+    // UI
     implementation lobsterPicker
+
+    // DEPENDENCY CHECK STRATEGY
+    dependencyUpdates.resolutionStrategy = dependencyUpdatesStrategy
 }
