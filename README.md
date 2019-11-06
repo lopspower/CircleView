@@ -44,22 +44,22 @@ XML
 
 You must use the following properties in your XML to change your CircleView.
 
-| Properties                      | Type                                                         | Default       |
-| ------------------------------- | ------------------------------------------------------------ | ------------- |
-| `app:cv_color`                  | color                                                        | WHITE         |
-| `app:cv_color_start`            | color                                                        | cv_color      |
-| `app:cv_color_end`              | color                                                        | cv_color      |
-| `app:cv_color_direction`        | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right |
-| `app:cv_border`                 | boolean                                                      | false         |
-| `app:cv_border_width`           | dimension                                                    | 4dp           |
-| `app:cv_border_color`           | color                                                        | BLACK         |
-| `app:cv_border_color_start`     | color                                                        | border_color  |
-| `app:cv_border_color_end`       | color                                                        | border_color  |
-| `app:cv_border_color_direction` | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right |
-| `app:cv_shadow`                 | boolean                                                      | false         |
-| `app:cv_shadow_color`           | color                                                        | BLACK         |
-| `app:cv_shadow_radius`          | float                                                        | 8.0f          |
-| `app:cv_shadow_gravity`         | center, top, bottom, start or end                            | bottom        |
+| Properties                      | Type                                                         | Default         |
+| ------------------------------- | ------------------------------------------------------------ | --------------- |
+| `app:cv_color`                  | color                                                        | WHITE           |
+| `app:cv_color_start`            | color                                                        | cv_color        |
+| `app:cv_color_end`              | color                                                        | cv_color        |
+| `app:cv_color_direction`        | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right   |
+| `app:cv_border`                 | boolean                                                      | false           |
+| `app:cv_border_width`           | dimension                                                    | 4dp             |
+| `app:cv_border_color`           | color                                                        | BLACK           |
+| `app:cv_border_color_start`     | color                                                        | cv_border_color |
+| `app:cv_border_color_end`       | color                                                        | cv_border_color |
+| `app:cv_border_color_direction` | left_to_right, right_to_left, top_to_bottom or bottom_to_top | left_to_right   |
+| `app:cv_shadow`                 | boolean                                                      | false           |
+| `app:cv_shadow_color`           | color                                                        | BLACK           |
+| `app:cv_shadow_radius`          | float                                                        | 8.0f            |
+| `app:cv_shadow_gravity`         | center, top, bottom, start or end                            | bottom          |
 
 :information_source: You can also use `android:elevation` instead of `app:cv_shadow` to have default Material Design elevation.
 
