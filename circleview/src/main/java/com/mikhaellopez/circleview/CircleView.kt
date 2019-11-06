@@ -116,29 +116,39 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         // Init Circle Color
         circleColor = attributes.getColor(R.styleable.CircleView_cv_color, Color.WHITE)
         attributes.getColor(R.styleable.CircleView_cv_color_start, 0)
-                .also { if (it != 0) circleColorStart = it }
+            .also { if (it != 0) circleColorStart = it }
         attributes.getColor(R.styleable.CircleView_cv_color_end, 0)
-                .also { if (it != 0) circleColorEnd = it }
-        circleColorDirection = attributes.getInteger(R.styleable.CircleView_cv_color_direction, circleColorDirection.value).toGradientDirection()
+            .also { if (it != 0) circleColorEnd = it }
+        circleColorDirection = attributes.getInteger(
+            R.styleable.CircleView_cv_color_direction,
+            circleColorDirection.value
+        ).toGradientDirection()
 
         // Init Border
         if (attributes.getBoolean(R.styleable.CircleView_cv_border, false)) {
             val defaultBorderSize = DEFAULT_BORDER_WIDTH * resources.displayMetrics.density
-            borderWidth = attributes.getDimension(R.styleable.CircleView_cv_border_width, defaultBorderSize)
+            borderWidth =
+                attributes.getDimension(R.styleable.CircleView_cv_border_width, defaultBorderSize)
             borderColor = attributes.getColor(R.styleable.CircleView_cv_border_color, borderColor)
             attributes.getColor(R.styleable.CircleView_cv_border_color_start, 0)
-                    .also { if (it != 0) borderColorStart = it }
+                .also { if (it != 0) borderColorStart = it }
             attributes.getColor(R.styleable.CircleView_cv_border_color_end, 0)
-                    .also { if (it != 0) borderColorEnd = it }
-            borderColorDirection = attributes.getInteger(R.styleable.CircleView_cv_border_color_direction, borderColorDirection.value).toGradientDirection()
+                .also { if (it != 0) borderColorEnd = it }
+            borderColorDirection = attributes.getInteger(
+                R.styleable.CircleView_cv_border_color_direction,
+                borderColorDirection.value
+            ).toGradientDirection()
         }
 
         // Init Shadow
         shadowEnable = attributes.getBoolean(R.styleable.CircleView_cv_shadow, shadowEnable)
         if (shadowEnable) {
             shadowColor = attributes.getColor(R.styleable.CircleView_cv_shadow_color, shadowColor)
-            shadowGravity = attributes.getInteger(R.styleable.CircleView_cv_shadow_gravity, shadowGravity.value).toShadowGravity()
-            shadowRadius = attributes.getFloat(R.styleable.CircleView_cv_shadow_radius, DEFAULT_SHADOW_RADIUS)
+            shadowGravity =
+                attributes.getInteger(R.styleable.CircleView_cv_shadow_gravity, shadowGravity.value)
+                    .toShadowGravity()
+            shadowRadius =
+                attributes.getFloat(R.styleable.CircleView_cv_shadow_radius, DEFAULT_SHADOW_RADIUS)
         }
 
         attributes.recycle()
@@ -158,13 +168,28 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         // Draw Shadow
         if (shadowEnable) {
             drawShadow()
-            canvas.drawCircle(circleCenterWithBorder, circleCenterWithBorder, circleCenterWithBorder - margeWithShadowRadius, paintShadow)
+            canvas.drawCircle(
+                circleCenterWithBorder,
+                circleCenterWithBorder,
+                circleCenterWithBorder - margeWithShadowRadius,
+                paintShadow
+            )
         }
 
         // Draw Border
-        canvas.drawCircle(circleCenterWithBorder, circleCenterWithBorder, circleCenterWithBorder - margeWithShadowRadius, paintBorder)
+        canvas.drawCircle(
+            circleCenterWithBorder,
+            circleCenterWithBorder,
+            circleCenterWithBorder - margeWithShadowRadius,
+            paintBorder
+        )
         // Draw Circle background
-        canvas.drawCircle(circleCenterWithBorder, circleCenterWithBorder, circleCenter - margeWithShadowRadius, paint)
+        canvas.drawCircle(
+            circleCenterWithBorder,
+            circleCenterWithBorder,
+            circleCenter - margeWithShadowRadius,
+            paint
+        )
     }
 
     private fun update() {
@@ -180,17 +205,25 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun manageCircleColor() {
-        paint.shader = createLinearGradient(circleColorStart ?: circleColor,
-                circleColorEnd ?: circleColor, circleColorDirection)
+        paint.shader = createLinearGradient(
+            circleColorStart ?: circleColor,
+            circleColorEnd ?: circleColor, circleColorDirection
+        )
     }
 
     private fun manageBorderColor() {
         val borderColor = if (borderWidth == 0f) circleColor else this.borderColor
-        paintBorder.shader = createLinearGradient(borderColorStart ?: borderColor,
-                borderColorEnd ?: borderColor, borderColorDirection)
+        paintBorder.shader = createLinearGradient(
+            borderColorStart ?: borderColor,
+            borderColorEnd ?: borderColor, borderColorDirection
+        )
     }
 
-    private fun createLinearGradient(startColor: Int, endColor: Int, gradientDirection: GradientDirection): LinearGradient {
+    private fun createLinearGradient(
+        startColor: Int,
+        endColor: Int,
+        gradientDirection: GradientDirection
+    ): LinearGradient {
         var x0 = 0f
         var y0 = 0f
         var x1 = 0f
@@ -236,23 +269,23 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     }
 
     private fun Int.toShadowGravity(): ShadowGravity =
-            when (this) {
-                1 -> ShadowGravity.CENTER
-                2 -> ShadowGravity.TOP
-                3 -> ShadowGravity.BOTTOM
-                4 -> ShadowGravity.START
-                5 -> ShadowGravity.END
-                else -> throw IllegalArgumentException("This value is not supported for ShadowGravity: $this")
-            }
+        when (this) {
+            1 -> ShadowGravity.CENTER
+            2 -> ShadowGravity.TOP
+            3 -> ShadowGravity.BOTTOM
+            4 -> ShadowGravity.START
+            5 -> ShadowGravity.END
+            else -> throw IllegalArgumentException("This value is not supported for ShadowGravity: $this")
+        }
 
     private fun Int.toGradientDirection(): GradientDirection =
-            when (this) {
-                1 -> GradientDirection.LEFT_TO_RIGHT
-                2 -> GradientDirection.RIGHT_TO_LEFT
-                3 -> GradientDirection.TOP_TO_BOTTOM
-                4 -> GradientDirection.BOTTOM_TO_TOP
-                else -> throw IllegalArgumentException("This value is not supported for GradientDirection: $this")
-            }
+        when (this) {
+            1 -> GradientDirection.LEFT_TO_RIGHT
+            2 -> GradientDirection.RIGHT_TO_LEFT
+            3 -> GradientDirection.TOP_TO_BOTTOM
+            4 -> GradientDirection.BOTTOM_TO_TOP
+            else -> throw IllegalArgumentException("This value is not supported for GradientDirection: $this")
+        }
 
     /**
      * ShadowGravity enum class to set the gravity of the CircleView shadow
