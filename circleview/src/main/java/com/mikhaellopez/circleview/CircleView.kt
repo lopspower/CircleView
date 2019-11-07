@@ -159,6 +159,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         update()
     }
 
+    //region Draw Method
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -267,6 +268,26 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
 
         paintShadow.setShadowLayer(shadowRadius, dx, dy, shadowColor)
     }
+    //endregion
+
+    //region Measure Method
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val usableWidth = measure(widthMeasureSpec) - (paddingLeft + paddingRight)
+        val usableHeight = measure(heightMeasureSpec) - (paddingTop + paddingBottom)
+        heightCircle = min(usableWidth, usableHeight)
+        setMeasuredDimension(heightCircle, heightCircle)
+    }
+
+    private fun measure(measureSpec: Int): Int {
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
+        return when (specMode) {
+            MeasureSpec.EXACTLY -> specSize // The parent has determined an exact size for the child.
+            MeasureSpec.AT_MOST -> specSize // The child can be as large as it wants up to the specified size.
+            else -> heightCircle // The parent has not imposed any constraint on the child.
+        }
+    }
+    //endregion
 
     private fun Int.toShadowGravity(): ShadowGravity =
         when (this) {
