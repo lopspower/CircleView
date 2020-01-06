@@ -9,7 +9,7 @@ import android.view.ViewOutlineProvider
 import kotlin.math.min
 
 /**
- * Copyright (C) 2019 Mikhael LOPEZ
+ * Copyright (C) 2020 Mikhael LOPEZ
  * Licensed under the Apache License Version 2.0
  */
 class CircleView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
