@@ -12,7 +12,7 @@ import kotlin.math.min
  * Copyright (C) 2019 Mikhael LOPEZ
  * Licensed under the Apache License Version 2.0
  */
-class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
+class CircleView(context: Context, attrs: AttributeSet? = null) : View(context, attrs) {
 
     companion object {
         private const val DEFAULT_BORDER_WIDTH = 4f
@@ -109,7 +109,7 @@ class CircleView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         init(context, attrs)
     }
 
-    private fun init(context: Context, attrs: AttributeSet) {
+    private fun init(context: Context, attrs: AttributeSet?) {
         // Load the styled attributes and set their properties
         val attributes = context.obtainStyledAttributes(attrs, R.styleable.CircleView, 0, 0)
 
