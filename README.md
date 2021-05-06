@@ -5,9 +5,7 @@ CircleView
 
 [![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
-[![Download](https://api.bintray.com/packages/lopspower/maven/com.mikhaellopez:circleview/images/download.svg?version=1.3.1)](https://bintray.com/lopspower/maven/com.mikhaellopez:circleview/1.3.1/link)
 <br>
-[![Twitter](https://img.shields.io/badge/Twitter-@LopezMikhael-blue.svg?style=flat)](http://twitter.com/lopezmikhael)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/1f1cf02d760848af8c6b63e7bb0a1db8)](https://app.codacy.com/app/lopspower/CircleView?utm_source=github.com&utm_medium=referral&utm_content=lopspower/CircleView&utm_campaign=Badge_Grade_Dashboard)
 
 This is an Android project allowing to realize a circular View in the simplest way possible. Finish the oval shapes of all colors in your projects.
@@ -22,7 +20,7 @@ USAGE
 To make a circular View add CircleView in your layout XML and add CircleView library in your project or you can also grab it via Gradle:
 
 ```groovy
-implementation 'com.mikhaellopez:circleview:1.3.2'
+implementation 'com.github.scottymack:circleview:1.3.2'
 ```
 
 XML
