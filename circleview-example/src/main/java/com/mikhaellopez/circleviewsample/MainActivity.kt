@@ -1,4 +1,4 @@
-package com.mikhaellopez.circleviewsample
+package com.scottymack.circleviewsample
 
 import android.os.Bundle
 import android.widget.SeekBar

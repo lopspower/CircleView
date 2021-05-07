@@ -1,4 +1,4 @@
-package com.mikhaellopez.circleview
+package com.scottymack.circleview
 
 import android.content.Context
 import android.graphics.*

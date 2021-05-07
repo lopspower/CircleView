@@ -27,7 +27,7 @@ XML
 -----
 
 ```xml    
-<com.mikhaellopez.circleview.CircleView
+<com.scottymack.circleview.CircleView
     android:id="@+id/circleView"
     android:layout_width="300dp"
     android:layout_height="300dp"

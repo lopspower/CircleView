@@ -23,7 +23,7 @@ dependencies {
 }
 
 //region Publish to jCenter
-def libGroupId = 'com.mikhaellopez'
+def libGroupId = 'com.scottymack'
 def libArtifactId = 'circleview'
 def libVersion = androidVersionName
 def libDesc = 'This is an Android project allowing to realize a circular View in the simplest way possible.'
