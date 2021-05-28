@@ -5,7 +5,7 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.larswerkman.lobsterpicker.OnColorListener
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider
-import kotlinx.android.synthetic.main.activity_main.*
+import com.mikhaellopez.circleview.CircleView
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,9 +13,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        seekBarBorderWidth.onProgressChanged { circleView.borderWidth = it.toFloat() }
-        seekBarShadowRadius.onProgressChanged { circleView.shadowRadius = it.toFloat() }
-        shadeSlider.onColorChanged {
+        val circleView = findViewById<CircleView>(R.id.circleView)
+
+        findViewById<SeekBar>(R.id.seekBarBorderWidth).onProgressChanged {
+            circleView.borderWidth = it.toFloat()
+        }
+        findViewById<SeekBar>(R.id.seekBarShadowRadius).onProgressChanged {
+            circleView.shadowRadius = it.toFloat()
+        }
+        findViewById<LobsterShadeSlider>(R.id.shadeSlider).onColorChanged {
             circleView.circleColor = it
             circleView.shadowColor = it
         }
