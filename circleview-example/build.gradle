@@ -30,5 +30,5 @@ dependencies {
     implementation lobsterPicker
 
     // DEPENDENCY CHECK STRATEGY
-    dependencyUpdates.resolutionStrategy = dependencyUpdatesStrategy
+    dependencyUpdates.resolutionStrategy dependencyUpdatesStrategy
 }
